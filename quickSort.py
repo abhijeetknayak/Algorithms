@@ -114,6 +114,7 @@ def findMedian(A, l, r):
                 return mid
             else:
                 return l
+        return mid
 
 
 def partitioning_median(A, l, r):
@@ -148,7 +149,7 @@ def partitioning_median(A, l, r):
         partitioning_median(A, i, r) # Right Part of the Array
 
 
-def quickSort():
+def quickSort(nA):
     A = [3,1,6,5,2,4,8,7,10,9,12,15,20,19,18,14,13,11,17,16]
     # partitioning_first(numbers, 0, len(numbers) - 1)
     # print(numbers)
@@ -159,6 +160,10 @@ def quickSort():
     # partitioning_median(numbers, 0, len(numbers) - 1)
     # print(numbers)
     # print(count)
+
+    partitioning_first(nA, 0, len(nA) - 1)
+    print(nA)
+
 
 
 if __name__ == '__main__':
