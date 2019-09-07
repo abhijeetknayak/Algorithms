@@ -9,4 +9,5 @@ https://lagunita.stanford.edu/courses/course-v1:Engineering+Algorithms1+SelfPace
 5. Strongly Connected components using Kosaraju's Algorithm
 6. Dijkstra's Shortest path algorithm
 7. Two-Sum problem via hash table. Actually slow :(
+8. Heap class implementation with insert and extract-min functions
 
