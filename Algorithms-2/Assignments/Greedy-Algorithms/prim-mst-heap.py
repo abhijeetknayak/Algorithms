@@ -10,10 +10,24 @@ class Heap:
         self.size = 0
 
     def insert(self, x):
+        self.size += 1
+        self.values.append(x)
+
+        index = self.size - 1
+        while self.values[index].cost < self.values[index // 2].cost:
+            self.swap_element(index, index // 2)
+            index = index // 2
+
+    def maintain_heap(self):
         pass
 
     def extract_min(self):
         min_val = self.values[0]
+        self.values[0] = self.values[self.size - 1]
+        self.size -= 1
+
+        self.maintain_heap()
+
 
         # Maintain Heap
         return min_val
@@ -43,3 +57,14 @@ def get_total_cost(edge_list):
 if __name__ == '__main__':
     fp = open('edges.txt')
     graph, node = process_file(fp)
+
+    heap = Heap()
+    heap.insert(Edges(1, 2, 5))
+    heap.insert(Edges(1, 2, 4))
+    heap.insert(Edges(1, 2, 1))
+    heap.insert(Edges(1, 2, -10))
+    heap.insert(Edges(1, 2, 34))
+
+    print(heap.values[0].cost)
+
+
