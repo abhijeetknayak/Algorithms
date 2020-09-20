@@ -26,15 +26,26 @@ class Heap:
         self.values[0] = self.values[self.size - 1]
         self.size -= 1
 
+        # Maintain Heap
         self.maintain_heap()
 
-
-        # Maintain Heap
         return min_val
 
     def swap_element(self, pos1, pos2):
         self.values[pos1], self.values[pos2] = self.values[pos2], self.values[pos1]
 
+def traverse(graph, node):
+    X = set(node[0])
+    edge_list = []  # List of all edge that belong to the MST
+
+    heap = Heap()
+    while len(X) != len(node):
+        for edge in graph:
+            if (edge.start in X and edge.end not in X) or (edge.end in X and edge.start not in X):
+                # Add this edge to the heap
+                heap.insert(edge)
+
+        edge_list.append(heap.extract_min())
 
 def process_file(fp):
     graph = []
