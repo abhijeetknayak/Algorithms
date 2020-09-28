@@ -1,4 +1,4 @@
-Algorithms-2 : Design and Analysis of Algorithms
+# **Algorithms-2 : Design and Analysis of Algorithms**
 
 ## **Part 1 : Greedy Algorithms** <br>
 * **Shortest path Routing** :
@@ -15,5 +15,10 @@ Algorithms-2 : Design and Analysis of Algorithms
     * **Minimum Spanning Trees** : Connecting a set of points as cheaply as possible. The MST should not have any cycles. Additionally, it has to span all vertices of the graph.<br>
     **Prim's algorithm** is an efficient way to create a minimum spanning tree from a graph. **The naive implementation(like Djikstra's) has running time O(m * n)**, where m is the number of edges and n is the number of vertices. Fast implementation of Prim's algorithm makes use of heaps, where minimum edge costs to the vertices that are already visited is stored in the heap. This has a running time of O(m + log(n)). <br>
     **Kruskal's Algorithm** is another MST algorithm. First, sort all edges according to their edge costs. Iterate over all edges and add them to the MST if there are no cycle creations because of the edge being added. **Naive implementation has a running time of O(m * n)**. using the **Union Find data structure**, the cycle checks can be completed in constant time, thereby reducing the running time of Kruskal's algorithm to O(m * log(n))
+    * **Clustering** : Classification into coherent groups, by looking for patterns in data. This is similar to Kruskal's algorithm, except for the fact that clustering is stopped once 'k' clusters are formed. The objective here is to maximize the minimum spacing. Spacing here refers to the distance between individual clusters.<br>
+    Union-Find Data structure : <br>
+     * [**Lazy Unions**]() -> the leader of a cluster is made to point to the leader of the other cluster while merging, without changing pointer on any of the other nodes. Merging operation can be done in constant time, with two find operations.
+     * **Union by Rank**
+    
     
  
