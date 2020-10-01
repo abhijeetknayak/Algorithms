@@ -17,8 +17,8 @@
     **Kruskal's Algorithm** is another MST algorithm. First, sort all edges according to their edge costs. Iterate over all edges and add them to the MST if there are no cycle creations because of the edge being added. **Naive implementation has a running time of O(m * n)**. using the **Union Find data structure**, the cycle checks can be completed in constant time, thereby reducing the running time of Kruskal's algorithm to O(m * log(n))
     * **Clustering** : Classification into coherent groups, by looking for patterns in data. This is similar to Kruskal's algorithm, except for the fact that clustering is stopped once 'k' clusters are formed. The objective here is to maximize the minimum spacing. Spacing here refers to the distance between individual clusters.<br>
     Union-Find Data structure : <br>
-     * [**Lazy Unions**]() -> the leader of a cluster is made to point to the leader of the other cluster while merging, without changing pointer on any of the other nodes. Merging operation can be done in constant time, with two find operations.
-     * **Union by Rank**
+     * [**Lazy Unions**]() -> The leader of a cluster is made to point to the leader of the other cluster while merging, without changing pointer on any of the other nodes. Merging operation can be done in constant time, with two find operations.
+     * **Union by Rank** -> If the root node while performing a union operation is arbitrarily chosen, the tree structure that is formed can be one-sided, which results in linear-time find operations(bad!). Instead, each node keeps track of its rank(Maximum number of hops needed to get to the node from a leaf node). The two leader nodes of two clusters are obtained using the find method. The new leader node is the one which has a bigger rank.
     
     
  
