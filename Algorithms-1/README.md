@@ -2,12 +2,15 @@
 Stanford Course on Algorithms
 https://lagunita.stanford.edu/courses/course-v1:Engineering+Algorithms1+SelfPaced/course/
 
-1. Divide and Conquer Approach to solve problems : Merge Sort, Strassen's Sub-cubic Matrix Multiplication, Closest points, Quick Sort
-2. Time Analysis of algorithms : Can we do better?
-3. Master Method to analyse running time of Algorithms
-4. Graphs - Minimum cuts using Random Contraction. Code included
-5. Strongly Connected components using Kosaraju's Algorithm
-6. Dijkstra's Shortest path algorithm
-7. Two-Sum problem via hash table. Actually slow :(
-8. Heap class implementation with insert and extract-min functions
+* Divide and Conquer Approach to solve problems : Merge Sort, Strassen's Sub-cubic Matrix Multiplication, Closest points, Quick Sort
+* Time Analysis of algorithms : Can we do better?
+* Master Method to analyse running time of Algorithms
+* Graphs - Minimum cuts using Random Contraction. Code included
+  * Graph Search : <br>
+    * Breadth-First Search : Add neighbors of explored node to the frontier. Every iteration, remove a node from the frontier and add its neighbors to the frontier. Start at the source node and continue till either all the nodes are traversed or if the destination node is reached(FIFO)
+    * Depth-First Search : Add neighbors of explored node to the frontier. Every iteration, remove the last inserted node from the frontier and add its neighbors to the frontier. This uses a Stack, which follows the principle of Last-In-First-Out(LIFO)
+* Strongly Connected components using Kosaraju's Algorithm
+* Dijkstra's Shortest path algorithm
+* Two-Sum problem via hash table. Actually slow :(
+* Heap class implementation with insert and extract-min functions
 
