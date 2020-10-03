@@ -10,7 +10,9 @@ class Graph {
 	    Graph(int vertices);  // Constructor
 	    void add_edge(int start, int end);  // Directed edge
 	    void DFS(int source, bool explored[]);
+	    void fill_stack(int source, bool explored[], stack<int> &s);
 	    Graph reverse_graph();
+	    void get_SCC();
 };
 
 Graph::Graph(int vertices) {
@@ -26,6 +28,7 @@ void Graph::add_edge(int start, int end) {
 void Graph::DFS(int source, bool explored[]) {
 	/* Recursive implementation */
 	explored[source] = true;
+	cout << source << " ";
 	list<int>::iterator i;
 	for (i = adj[source].begin(); i != adj[source].end(); i++) {
 		if (explored[*i] == false) {
@@ -34,6 +37,49 @@ void Graph::DFS(int source, bool explored[]) {
 	}
 }
 
+void Graph::fill_stack(int source, bool explored[], stack<int> &s) {
+	/* Recursive implementation */
+	explored[source] = true;
+	list<int>::iterator i;
+	for (i = adj[source].begin(); i != adj[source].end(); i++) {
+		if (explored[*i] == false) {
+			fill_stack(*i, explored, s);
+		}
+	}
+	s.push(source);  // Earliest finishing time will be at the end
+}
+
+void Graph::get_SCC(void) {
+	bool * explored = new bool[N];
+	for (int i = 0; i < N; i++) {
+		explored[i] = false;
+	}
+
+	stack<int> order;
+	for (int i = 0; i < N; i++) {
+		if (!explored[i])
+			fill_stack(i, explored, order);
+	}
+
+	Graph reverse = reverse_graph();
+
+	for (int i = 0; i < N; i++) {
+		explored[i] = false;
+	}
+
+	while (!order.empty()) {
+		int source = order.top();
+		order.pop();
+
+		if (!explored[source]) {
+			reverse.DFS(source, explored);
+			cout << endl;  // New SCC
+		}
+
+
+
+	}
+}
 Graph Graph::reverse_graph(void) {
 	Graph output(N);
 	for (int n = 0; n < N; n++) {
@@ -44,9 +90,4 @@ Graph Graph::reverse_graph(void) {
 	}
 
 	return output;
-}
-
-int main() {
-
-	return 0;
 }
