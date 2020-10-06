@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#include "transitive-closure.h"
+#include "k-cores.h"
 
 using namespace std;
 
