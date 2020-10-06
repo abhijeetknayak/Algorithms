@@ -9,7 +9,10 @@ https://lagunita.stanford.edu/courses/course-v1:Engineering+Algorithms1+SelfPace
   * Graph Search : <br>
     * Breadth-First Search : Add neighbors of explored node to the frontier. Every iteration, remove a node from the frontier and add its neighbors to the frontier. Start at the source node and continue till either all the nodes are traversed or if the destination node is reached(FIFO)
     * Depth-First Search : Add neighbors of explored node to the frontier. Every iteration, remove the last inserted node from the frontier and add its neighbors to the frontier. This uses a Stack, which follows the principle of Last-In-First-Out(LIFO)
-* Strongly Connected components using Kosaraju's Algorithm
+* Strongly Connected components using Kosaraju's Algorithm : <br>
+  * 
+* Mother Vertex in a graph : A vertex that has a directed path to all the other vertices. <br>
+  * 
 * Dijkstra's Shortest path algorithm
 * Two-Sum problem via hash table. Actually slow :(
 * Heap class implementation with insert and extract-min functions
