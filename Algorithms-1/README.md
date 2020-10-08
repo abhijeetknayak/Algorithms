@@ -13,6 +13,14 @@ https://lagunita.stanford.edu/courses/course-v1:Engineering+Algorithms1+SelfPace
   * 
 * Mother Vertex in a graph : A vertex that has a directed path to all the other vertices. <br>
   * 
+* Tree Data Structure : Hierarchical Data Structure
+  * Binary tree : A node has two child nodes, a left child and a right child.
+  * Types of binary trees : 
+    * Full Binary tree : A node has 0 or 2 children
+    * Complete Binary tree : All levels are filled, except maybe the last one
+    * Perfect Binary tree : All levels are filled
+    * Balanced Binary tree : Maintain the O(log n) invariant after every operation on the tree
+    * Degenerate Trees : Every node has a single child
 * Dijkstra's Shortest path algorithm
 * Two-Sum problem via hash table. Actually slow :(
 * Heap class implementation with insert and extract-min functions
