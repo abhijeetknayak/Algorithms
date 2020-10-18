@@ -91,4 +91,39 @@ node * delete_node(node * root_node, int val) {
 	return root_node;
 }
 
+void tree_BFS(node * root_node) {
+	if (root_node != NULL) {
+		queue<node*> nodes;
+		nodes.push(root_node);
+
+		while(!nodes.empty()) {
+			node * front = nodes.front();
+			cout << front->data << " ";
+			nodes.pop();
+
+			if (front->left_child != NULL) {
+				/* Add left child to nodes queue */
+				nodes.push(front->left_child);
+			}
+
+			if (front->right_child != NULL) {
+				/* Add left child to nodes queue */
+				nodes.push(front->right_child);
+			}
+		}
+	}
+}
+
+void tree_DFS_inorder_traversal(node * root_node) {
+
+}
+
+void tree_DFS_preorder_traversal(node * root_node) {
+
+}
+
+void tree_DFS_postorder_traversal(node * root_node) {
+
+}
+
 
