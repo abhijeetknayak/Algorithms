@@ -17,15 +17,25 @@ int main() {
 
 	// cout << root->left_child->right_child->data;
 
-	root = delete_node(root, 8); // Deletion not possible
-	root = delete_node(root, 2);
-	root = delete_node(root, 3);
+	// root = delete_node(root, 8); // Deletion not possible
+	// root = delete_node(root, 2);
+	// root = delete_node(root, 3);
 
-	cout << root->left_child->data << "  " << root->right_child->data << endl;
+	/* BFS */
+	tree_BFS(root);
+	cout << endl;
 
+	/* Inorder Traversal */
+	tree_DFS_inorder_traversal(root);
+	cout << endl;
 
+	/* PreOrder Traversal */
+	tree_DFS_preorder_traversal(root);
+	cout << endl;
 
-
+	/* PostOrder Traversal */
+	tree_DFS_postorder_traversal(root);
+	cout << endl;
 
 	return 0;
 }

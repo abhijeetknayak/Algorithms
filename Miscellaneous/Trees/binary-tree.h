@@ -115,15 +115,31 @@ void tree_BFS(node * root_node) {
 }
 
 void tree_DFS_inorder_traversal(node * root_node) {
+	/* Recursive solution - [Left Child -> Root -> Right Child] */
+	if (root_node == NULL) { return; }
 
+	tree_DFS_inorder_traversal(root_node->left_child);
+	cout << root_node->data << " ";
+	tree_DFS_inorder_traversal(root_node->right_child);
 }
 
 void tree_DFS_preorder_traversal(node * root_node) {
+	/* Recursive solution - [Root -> Left Child -> Right Child] */
+	if (root_node == NULL) { return; }
+
+	cout << root_node->data << " ";
+	tree_DFS_preorder_traversal(root_node->left_child);
+	tree_DFS_preorder_traversal(root_node->right_child);
 
 }
 
 void tree_DFS_postorder_traversal(node * root_node) {
+	/* Recursive solution - [Left Child -> Right Child -> Root] */
+	if (root_node == NULL) { return; }
 
+	tree_DFS_postorder_traversal(root_node->left_child);
+	tree_DFS_postorder_traversal(root_node->right_child);
+	cout << root_node->data << " ";
 }
 
 
