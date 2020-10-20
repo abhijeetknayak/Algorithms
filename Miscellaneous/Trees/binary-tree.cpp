@@ -37,5 +37,8 @@ int main() {
 	tree_DFS_postorder_traversal(root);
 	cout << endl;
 
+	inorder_traversal_without_recursion(root);
+	cout << endl;
+
 	return 0;
 }
