@@ -142,4 +142,24 @@ void tree_DFS_postorder_traversal(node * root_node) {
 	cout << root_node->data << " ";
 }
 
+void inorder_traversal_without_recursion(node * root_node) {
+	stack<node *> nodes;
+	nodes.push(root_node);
+
+	node * current = root_node;
+	while((current != NULL) || (!nodes.empty())) {
+		while(current != NULL) {
+			current = current->left_child;
+			nodes.push(current);
+		}
+		/* Last Element in the leftmost leaf */
+		current = nodes.top();
+		cout << current->data << " ";
+		nodes.pop();
+
+		/* Starting with the right child now. Next while loop will en */
+		current = current->right_child;
+	}
+}
+
 
