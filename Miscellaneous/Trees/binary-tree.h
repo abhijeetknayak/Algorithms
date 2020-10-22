@@ -148,6 +148,7 @@ void inorder_traversal_without_recursion(node * root_node) {
 
 	while((current != NULL) || (!nodes.empty())) {
 		while(current != NULL) {
+			/* Get to leftmost nodes from current node */
 			nodes.push(current);
 			current = current->left_child;
 		}
