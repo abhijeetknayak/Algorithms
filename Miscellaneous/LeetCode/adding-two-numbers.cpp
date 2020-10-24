@@ -12,9 +12,18 @@ struct ListNode{
 	}
 };
 
+void print_number(ListNode * node) {
+	while (node != NULL) {
+		cout << node->val << " ";
+		node = node->next;
+	}
+	cout << endl;
+}
 
 ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
 	ListNode * result = new ListNode(0);
+	ListNode * current = result;
+
 	int val = 0;
 	while(l1 != NULL || l2 != NULL) {
 		if (l1 != NULL) {
@@ -27,21 +36,16 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
 		}
 		int res = val % 10;
 		val = val / 10;
-		result->next = new ListNode(res);
-		result = result->next;
+		current->next = new ListNode(res);
+		current = current->next;
 	}
+
 	if (val > 0) {
 		/* Create last node with val */
-		result->next = new ListNode(val);
+		current->next = new ListNode(val);
 	}
-return(result->next);
-}
-
-void print_number(ListNode * node) {
-	while (node != NULL) {
-		cout << node->val << " ";
-		node = node->next;
-	}
+	print_number(current);
+	return(result->next);
 }
 
 int main() {
@@ -62,8 +66,10 @@ int main() {
 	print_number(n1);
 	print_number(n4);
 
-//	ListNode * result = addTwoNumbers(n1, n4);
-//	cout << result->val << " " << result->next->val << " ";
+	ListNode * result = addTwoNumbers(n1, n4);
+	cout << "Res : ";
+
+	print_number(result);
 
 	return 0;
 }
