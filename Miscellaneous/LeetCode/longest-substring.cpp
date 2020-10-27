@@ -9,7 +9,7 @@ int lengthOfLongestSubstring(string s) {
 	int str_len = s.size();
 
 	for (int i = 0; i < str_len; i++) {
-		j = max(j, prevIndex[s[i]] + 1);  // First occurance
+		j = max(j, prevIndex[s[i]] + 1);  // First occurrence
 		length = max(length, i - j + 1);  // Final result = max(res, distance from i to j)
 		prevIndex[s[i]] = i;
 	}

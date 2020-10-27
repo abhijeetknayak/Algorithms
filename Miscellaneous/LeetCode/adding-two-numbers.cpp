@@ -44,7 +44,6 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
 		/* Create last node with val */
 		current->next = new ListNode(val);
 	}
-	print_number(current);
 	return(result->next);
 }
 
