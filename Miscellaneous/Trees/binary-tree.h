@@ -162,4 +162,29 @@ void inorder_traversal_without_recursion(node * root_node) {
 	}
 }
 
+void morris_traversal(node * root_node) {
+	node * current = root_node, * pre;
+	while(current != NULL) {
+		if (current->left_child == NULL) {
+			cout << current->data << " ";
+			current = current->right_child;
+		}
+		else {
+			pre = current->left_child;
+			while (pre->right_child != NULL && pre->right_child != current)
+				pre = pre->right_child;
+			if (pre->right_child == NULL) {
+				pre->right_child = current;
+				current = current->left_child;
+			}
+			else {
+				pre->right_child = NULL;
+				cout << current->data << " ";
+				current = current->right_child;
+			}
+
+		}
+	}
+}
+
 
