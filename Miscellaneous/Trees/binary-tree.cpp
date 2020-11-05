@@ -40,5 +40,22 @@ int main() {
 	inorder_traversal_without_recursion(root);
 	cout << endl;
 
+	morris_traversal(root);
+	cout << endl;
+
+	int sum_depth = 0;
+	DFS_depth(root, 0, &sum_depth);
+	cout << sum_depth << endl;
+
+	root = insert_node(root, 6);
+	root = insert_node(root, 7);
+	root = insert_node(root, 8);
+	root = insert_node(root, 9);
+
+	sum_depth = 0;
+	DFS_depth(root, 0, &sum_depth);
+	cout << sum_depth << endl;
+
+
 	return 0;
 }
