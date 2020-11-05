@@ -187,4 +187,14 @@ void morris_traversal(node * root_node) {
 	}
 }
 
+void DFS_depth(node * root_node, int depth, int * sum_depth) {
+	/* Recursive solution - [Left Child -> Root -> Right Child] */
+	if (root_node == NULL) { return; }
+
+	if (sum_depth != NULL) { *sum_depth += depth; }
+
+	DFS_depth(root_node->left_child, depth + 1, sum_depth);
+	DFS_depth(root_node->right_child, depth + 1, sum_depth);
+}
+
 
