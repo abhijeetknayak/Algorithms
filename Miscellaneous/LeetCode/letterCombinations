@@ -1,0 +1,30 @@
+    vector<string> letterCombinations(string digits) {
+        unordered_map <char, string> letters;
+        letters['0'] = "";
+        letters['1'] = "";
+        letters['2'] = "abc";
+        letters['3'] = "def";
+        letters['4'] = "ghi";
+        letters['5'] = "jkl";
+        letters['6'] = "mno";
+        letters['7'] = "pqrs";
+        letters['8'] = "tuv";
+        letters['9'] = "wxyz";
+
+        vector<string> result {""};
+        vector<string> temp;
+
+        if (digits.empty()) return temp;
+
+        for (auto ch : digits) {
+            temp.clear();
+            for (int i = 0; i < result.size(); i++) {
+                for (int j = 0; j < letters[ch].size(); j++) {
+                    temp.push_back(result[i] + letters[ch][j]);
+                }
+            }
+            result = temp;
+        }
+
+        return result;
+    }
