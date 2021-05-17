@@ -37,4 +37,25 @@ void populate_arcs(vector<vector<int>> graph, queue<pair<int, int>>& arcs) {
 	}
 }
 
+bool arc_consistency(vector<vector<int>> graph, vector<vector<int>>& domains) {
+	queue<pair<int, int>> arcs;
+	populate_arcs(graph, arcs);
+
+	while (!arcs.empty()) {
+		pair<int, int> p = arcs.front(); arcs.pop();
+		if (revise(graph, domains, p.first, p.second)) {
+			/* Domain revised. Add arcs to queue, exit is domain size is 0 */
+			if (domains[p.first].size() == 0) return false;
+
+			for (int i = 0; i < graph[p.first].size(); i++) {
+				if (graph[p.first][i] != p.second) {
+					arcs.push(make_pair(graph[p.first][i], p.first));
+				}
+			}
+		}
+	}
+
+	return true;
+}
+
 
