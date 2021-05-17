@@ -58,4 +58,19 @@ bool arc_consistency(vector<vector<int>> graph, vector<vector<int>>& domains) {
 	return true;
 }
 
+int main() {
+	vector<vector<int>> graph{ {1, 2, 4}, {0, 4}, {0, 3, 4, 5}, {2, 5}, {0, 1, 2, 5}, {2, 3, 4} };
+	vector<vector<int>> domains{ {1, 2, 3}, {1}, {1, 3}, {1, 2, 3}, {1, 3}, {1, 2, 3} };
+	cout << arc_consistency(graph, domains) << endl;
+	for (int i = 0; i < domains.size(); i++) {
+		cout << "Domain for Node " << i << ": ";
+		for (int j = 0; j < domains[i].size(); j++) {
+			cout << domains[i][j] << " ";
+		}
+		cout << endl;
+	}
+
+	return 0;
+}
+
 
