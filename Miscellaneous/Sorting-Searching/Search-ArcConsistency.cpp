@@ -17,3 +17,24 @@ bool revise(vector<vector<int>> graph, vector<vector<int>>& domains, int start, 
 
 	return modified;
 }
+
+void populate_arcs(vector<vector<int>> graph, queue<pair<int, int>>& arcs) {
+	vector<int> explored;
+	queue<int> frontier;
+	frontier.push(0);
+
+	while (!frontier.empty()) {
+		int node = frontier.front(); frontier.pop();
+		if (find(explored.begin(), explored.end(), node) != explored.end()) continue;
+		explored.push_back(node);
+
+		for (int i = 0; i < graph[node].size(); i++) {
+			arcs.push(make_pair(node, graph[node][i]));
+			if (find(explored.begin(), explored.end(), graph[node][i]) == explored.end()) {
+				frontier.push(graph[node][i]);
+			}			
+		}
+	}
+}
+
+
