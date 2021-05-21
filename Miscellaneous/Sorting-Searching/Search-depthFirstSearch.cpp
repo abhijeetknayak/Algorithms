@@ -21,3 +21,13 @@ public:
     return this;
   }
 };
+
+/* Recursive DFS without Trees */
+void DepthFirstSearch(vector<vector<int>> graph, int start, vector<int>& explored) {
+	explored.push_back(start);
+	for (int i = 0; i < graph[start].size(); i++) {
+		if (find(explored.begin(), explored.end(), graph[start][i]) == explored.end()) {
+			DepthFirstSearch(graph, graph[start][i], explored);
+		}
+	}
+}
