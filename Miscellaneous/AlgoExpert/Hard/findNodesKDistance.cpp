@@ -1,6 +1,5 @@
 using namespace std;
 
-// This is an input class. Do not edit.
 class BinaryTree {
 public:
   int value;
