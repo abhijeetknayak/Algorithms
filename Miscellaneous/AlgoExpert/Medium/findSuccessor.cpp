@@ -27,3 +27,21 @@ BinaryTree *findSuccessor(BinaryTree *tree, BinaryTree *node) {
 	}
   return nullptr;
 }
+
+BinaryTree *findSuccessor_non_Recursive(BinaryTree *tree, BinaryTree *node) {
+	if (node->right == NULL) {
+		/* Get the parent pointer */
+		if (node->parent != NULL && node == node->parent->right) return node->parent->parent;
+		else return node->parent;
+	}
+	else {
+		/* Get leftmost child of right child */
+		BinaryTree* rc = node->right;
+		while(rc->left != NULL) {
+			rc = rc->left;
+		}
+		return rc;
+	}
+  return nullptr;
+}
+
