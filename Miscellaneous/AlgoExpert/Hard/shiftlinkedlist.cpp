@@ -50,6 +50,37 @@ LinkedList *shiftLinkedList(LinkedList *head, int k) {
 	return newHead;
 }
 
+LinkedList *shiftLinkedListRecent(LinkedList *head, int k) {
+	int list_len = 0, i = 0;
+	LinkedList * temp = head;
+	while (temp != NULL) {
+		list_len += 1;
+		temp = temp->next;
+	}
+	
+	if (k == 0 || abs(k) % list_len == 0) return head;
+	else if (k > 0) k = list_len - (k % list_len) - 1;
+	else k = (abs(k) % list_len) - 1;
+	
+	temp = head;
+	while (i < k) {
+		temp = temp->next;
+		i++;
+	}
+	
+	LinkedList * temp_head = head;
+	head = temp->next;
+	temp->next = NULL;
+	
+	temp = head;
+	while (temp->next != NULL) {
+		temp = temp->next;
+	}
+	
+	temp->next = temp_head;	
+  return head;
+}
+
 int main() {
 	LinkedList a(0);
 	a.next = new LinkedList(1);
