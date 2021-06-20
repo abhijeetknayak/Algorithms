@@ -1,0 +1,9 @@
+#include <vector>
+using namespace std;
+
+int indexEqualsValue(vector<int> array) {
+	for (int i = 0; i < array.size(); i++) {
+		 if (i == array[i]) return i;
+	}
+  return -1;
+}
