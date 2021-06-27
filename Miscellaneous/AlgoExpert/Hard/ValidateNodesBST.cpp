@@ -41,3 +41,51 @@ bool validateThreeNodesNaive(BST *nodeOne, BST *nodeTwo, BST *nodeThree) {
 	
   return found;
 }
+
+bool validateThreeNodes(BST *nodeOne, BST *nodeTwo, BST *nodeThree) {
+  BST * searchFromOne = nodeOne;
+	BST * searchFromThree = nodeThree;
+	
+	bool found2_from3 = false, found2_from1 = false, retVal = false;
+	
+	while(true) {
+		if (!found2_from3) found2_from3 = searchFromThree == nodeTwo;
+		if (!found2_from1) found2_from1 = searchFromOne == nodeTwo;
+				
+		if (searchFromOne != NULL) {
+			if (found2_from1) {
+				if (searchFromOne == nodeThree) {
+					retVal = true; break;
+				}
+				else if (nodeThree->value < searchFromOne->value)
+					searchFromOne = searchFromOne->left;
+				else searchFromOne = searchFromOne->right;
+			}
+			else {				
+				if (nodeTwo->value < searchFromOne->value) 
+					searchFromOne = searchFromOne->left;
+				else searchFromOne = searchFromOne->right;
+			}				
+		}
+		
+		if (searchFromThree != NULL) {
+			if (found2_from3) {
+				if (searchFromThree == nodeOne) {
+					retVal = true; break;
+				}
+				else if (nodeOne->value < searchFromThree->value)
+					searchFromThree = searchFromThree->left;
+				else searchFromThree = searchFromThree->right;
+			}
+			else {				
+				if (nodeTwo->value < searchFromThree->value) 
+					searchFromThree = searchFromThree->left;
+				else searchFromThree = searchFromThree->right;
+			}				
+		}
+		
+		if (searchFromThree == NULL && searchFromOne == NULL) break;
+	}
+	return retVal;
+}
+
