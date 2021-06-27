@@ -41,7 +41,6 @@ bool validateThreeNodesNaive(BST *nodeOne, BST *nodeTwo, BST *nodeThree) {
 	
   return found;
 }
-
 bool validateThreeNodes(BST *nodeOne, BST *nodeTwo, BST *nodeThree) {
   BST * searchFromOne = nodeOne;
 	BST * searchFromThree = nodeThree;
@@ -61,8 +60,9 @@ bool validateThreeNodes(BST *nodeOne, BST *nodeTwo, BST *nodeThree) {
 					searchFromOne = searchFromOne->left;
 				else searchFromOne = searchFromOne->right;
 			}
-			else {				
-				if (nodeTwo->value < searchFromOne->value) 
+			else {	
+				if (searchFromOne == nodeThree) break;
+				else if (nodeTwo->value < searchFromOne->value) 
 					searchFromOne = searchFromOne->left;
 				else searchFromOne = searchFromOne->right;
 			}				
@@ -77,8 +77,9 @@ bool validateThreeNodes(BST *nodeOne, BST *nodeTwo, BST *nodeThree) {
 					searchFromThree = searchFromThree->left;
 				else searchFromThree = searchFromThree->right;
 			}
-			else {				
-				if (nodeTwo->value < searchFromThree->value) 
+			else {		
+				if (searchFromThree == nodeOne) break;
+				else if (nodeTwo->value < searchFromThree->value) 
 					searchFromThree = searchFromThree->left;
 				else searchFromThree = searchFromThree->right;
 			}				
@@ -88,4 +89,5 @@ bool validateThreeNodes(BST *nodeOne, BST *nodeTwo, BST *nodeThree) {
 	}
 	return retVal;
 }
+
 
