@@ -1,6 +1,38 @@
 #include <vector>
 using namespace std;
 
+int findGCD(int a, int b) {
+	while(true) {
+		if (a == 0)
+			return b;
+		if (b == 0) 
+			return a;
+		int tB = b;
+		b = a % b;
+		a = tB;
+	}
+}
+
+string getString(vector<int> a, vector<int> b) {
+	string s = "";
+	if (b[0] != a[0]) {
+		/* X-Coordinates are different */
+		int gcd = findGCD(b[0] - a[0], b[1] - a[1]);
+		int num = (b[1] - a[1]) / gcd;
+		int den = (b[0] - a[0]) / gcd;
+		if (num == 0) {
+			s = to_string(num) + ':' + to_string(num);
+		}
+		else {
+			s = to_string(num) + ':' + to_string(den);
+		}		
+	}
+	else {
+		s = "INF:INF";
+	}
+	
+	return s;
+}
 int lineThroughPoints(vector<vector<int>> points) {
 	int max_val = -1;
 	if (points.size() == 1) return 1;
@@ -8,17 +40,10 @@ int lineThroughPoints(vector<vector<int>> points) {
 		cout << "I is " << i << endl;
 		unordered_map<string, int> slopes;
 		for (int j = i + 1; j < points.size(); j++) {
-			string s = "";
-			double slope = 0.0;
-			if (points[i][0] == points[j][0])
-				s = "INF";
-			else {
-				slope = (points[i][1] - points[j][1]) / (double)(points[i][0] - points[j][0]);
-				s = to_string(slope);
-			}
+			string s = getString(points[i], points[j]);
 			
 			cout << s << endl;
-			
+						
 			if (slopes.find(s) != slopes.end()) {
 				slopes[s] += 1;
 			}
