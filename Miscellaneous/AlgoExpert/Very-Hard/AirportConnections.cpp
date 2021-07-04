@@ -48,29 +48,50 @@ void find_max_possible_connections(map<string, vector<string>> connections,
 	}
 }
 
+void recursively_add_connections(string last_airport,
+																 vector<string>& already_connected,
+																map<string, vector<string>> max_connections) {
+	for(int i = 0; i < max_connections[last_airport].size(); i++) {
+		string new_airport = max_connections[last_airport][i];
+		if (find(already_connected.begin(), already_connected.end(), new_airport) == already_connected.end()) {
+			already_connected.push_back(new_airport);
+			recursively_add_connections(new_airport, already_connected, max_connections);
+		}
+	}
+}
+
 int airportConnections(vector<string> airports, vector<vector<string>> routes,
                        string startingAirport) {
 	map<string, vector<string>> connections;
+	
+	/* Create the graph */
 	generate_graph(routes, connections);
 	
 	map<string, vector<string>> max_connections;
 	priority_queue<pair<int, string>> p;
+	
+	/* Find all possible airports that you can get to from amn airport */
 	find_max_possible_connections(connections, max_connections, p, airports);
 	
-	// while (!p.empty()) {
-	// 	pair<int, string> top = p.top();
-	// 	cout << top.first << " " << top.second << endl;
-	// 	p.pop();
-	// }
+	vector<string> already_connected = max_connections[startingAirport];
+	int count = 0;
+	vector<string> result;
 	
-	for (auto ele : max_connections) {
-		cout << ele.first << " ";
-		for (int i  = 0; i < ele.second.size(); i++) {
-			cout << ele.second[i] << " ";
+	/* Now check if you can add connections to the airports, if not already connected
+	If a new connection is created, make sure all the other possible connections are added recursively */
+	while(!p.empty()) {
+		pair<int, string> top = p.top();		p.pop();
+		if (top.second == startingAirport) continue;
+		if (find(already_connected.begin(), already_connected.end(), top.second) == already_connected.end()) {
+			/* This airport is not connected yet */
+			count += 1;
+			result.push_back(top.second);
+			already_connected.push_back(top.second);
+			
+			/* Find all the other connections that are added because of this new one */
+			recursively_add_connections(top.second, already_connected, max_connections);
 		}
-		cout << endl;
-	}
-	
+	}	
 
-  return -1;
+  return count;
 }
