@@ -8,7 +8,7 @@ class Node {
 };
 
 void generate_graph(vector<vector<string>> routes, 
-									 map<string, vector<string>>& connections) {
+		    map<string, vector<string>>& connections) {
 	for (int i = 0; i < routes.size(); i++) {
 		string start = routes[i][0];
 		if (connections.find(start) != connections.end()) {
@@ -21,7 +21,7 @@ void generate_graph(vector<vector<string>> routes,
 }
 
 void DFS_from_start_airport(string airport, string cur_airport, map<string, vector<string>> connections,
-													 vector<string>& visited) {
+			    vector<string>& visited) {
 	if (connections.find(cur_airport) != connections.end()) {
 		/* Add new connections */
 		for (int i = 0; i < connections[cur_airport].size(); i++) {
@@ -37,9 +37,9 @@ void DFS_from_start_airport(string airport, string cur_airport, map<string, vect
 }
 
 void find_max_possible_connections(map<string, vector<string>> connections,
-																	map<string, vector<string>>& max_con,
-																	priority_queue<pair<int, string>>& p,
-																	vector<string> airports) {
+				   map<string, vector<string>>& max_con,
+				   priority_queue<pair<int, string>>& p,
+				   vector<string> airports) {
 	for (int i = 0; i < airports.size(); i++) {
 		vector<string> visited{};
 		DFS_from_start_airport(airports[i], airports[i], connections, visited);
@@ -49,8 +49,8 @@ void find_max_possible_connections(map<string, vector<string>> connections,
 }
 
 void recursively_add_connections(string last_airport,
-																 vector<string>& already_connected,
-																map<string, vector<string>> max_connections) {
+				 vector<string>& already_connected,
+				 map<string, vector<string>> max_connections) {
 	for(int i = 0; i < max_connections[last_airport].size(); i++) {
 		string new_airport = max_connections[last_airport][i];
 		if (find(already_connected.begin(), already_connected.end(), new_airport) == already_connected.end()) {
