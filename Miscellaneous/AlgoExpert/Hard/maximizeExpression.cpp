@@ -31,3 +31,24 @@ int maximizeExpression(vector<int> array) {
 	
   return dp4[dp4.size() - 1];
 }
+
+int maximizeExpressionBF(vector<int> array) {
+	/* O(N^4) ! :( */
+	if (array.size() < 4) return 0;
+	int max_i = -1, max_j = -1, max_k = -1, max_l = -1;
+	int max_val = INT_MIN;
+	for (int i = 0; i < array.size() - 3; i++) {
+		for (int j = i + 1; j < array.size() - 2; j++) {
+			for (int k = j + 1; k < array.size() - 1; k++) {
+				for (int l = k + 1; l < array.size(); l++) {
+					int s = array[i] - array[j] + array[k] - array[l];
+					if (s > max_val) {
+						max_val = s;
+						max_i = i; max_j = j; max_k = k; max_l = l;
+					}					
+				}
+			}
+		}
+	}
+  return max_val;
+}
