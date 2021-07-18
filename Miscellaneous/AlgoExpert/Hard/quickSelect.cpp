@@ -30,3 +30,30 @@ int quickselect(vector<int> array, int k) {
 	recursive_helper(array, 0, array.size() - 1, k);
   return array[k - 1];
 }
+
+int quickselectIterative(vector<int> array, int k) {
+	int start_idx = 0, end_idx = array.size() - 1;
+	while(true) {
+		int pivot_idx = start_idx;
+		int left = start_idx, right = end_idx;
+		
+		while (left <= right) {
+			if (array[left] > array[pivot_idx] && array[right] <= array[pivot_idx]) {
+				swap(array[left], array[right]);
+				left++; right--;
+			}
+			if (array[left] <= array[pivot_idx]) left++;
+			if (array[right] > array[pivot_idx]) right--;
+		}
+		swap(array[right], array[pivot_idx]);
+			
+		if (k - 1 == right) return array[right];
+		else if (k - 1 < right) {
+			end_idx = right - 1;
+		}
+		else {
+			start_idx = right + 1; 
+		}
+	}
+  return -1;
+}
