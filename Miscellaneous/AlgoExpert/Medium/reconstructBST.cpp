@@ -32,7 +32,7 @@ void insert_node(BST * root, int value) {
 	root = temp;
 }
 
-BST * reconstructBst(vector<int> preOrderTraversalValues) {
+BST * reconstructBst1(vector<int> preOrderTraversalValues) {
 	if (preOrderTraversalValues.size() == 0) return NULL;
 	
 	BST * root = new BST(preOrderTraversalValues[0]);
@@ -46,4 +46,24 @@ BST * reconstructBst(vector<int> preOrderTraversalValues) {
 	}
 	
 	return root;
+}
+
+BST *reconstructBst2(vector<int> preOrderTraversalValues) {
+	if (preOrderTraversalValues.size() == 0) return NULL;
+	
+	int rightIdx = preOrderTraversalValues.size();
+	BST * root = new BST(preOrderTraversalValues[0]);
+	
+	for (int i = 1; i < preOrderTraversalValues.size(); i++) {
+		if (preOrderTraversalValues[i] >= preOrderTraversalValues[0]) {
+			rightIdx = i;
+			break;
+		}
+	}
+	
+	/* Left and Right sub tree available */
+	root->left = reconstructBst(vector<int>(preOrderTraversalValues.begin() + 1, preOrderTraversalValues.begin() + rightIdx));
+	root->right = reconstructBst(vector<int>(preOrderTraversalValues.begin() + rightIdx, preOrderTraversalValues.end()));
+		
+  return root;
 }
