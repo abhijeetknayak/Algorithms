@@ -35,3 +35,26 @@ int maxSubArray1(vector<int>& nums) {
 	cout << first << " " << second << " " << max_sum;
 	return max_sum;
 }
+
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int max_so_far = INT_MIN, max_end_here = 0;
+        int left = -1, right = -1;
+        for (int i = 0; i < nums.size(); i++) {
+            max_end_here += nums[i];
+            if (max_end_here < nums[i]) {
+                max_end_here = nums[i];
+                left = i;
+                right = i;
+            }
+            
+            if (max_so_far < max_end_here) {
+                max_so_far = max_end_here;
+                right = i;
+            }
+        }
+        cout << left << " " << right << endl;
+        return max_so_far;
+    }
+};
